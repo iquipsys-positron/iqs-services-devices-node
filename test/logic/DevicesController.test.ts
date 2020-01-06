@@ -9,7 +9,7 @@ import { FilterParams } from 'pip-services3-commons-node';
 import { PagingParams } from 'pip-services3-commons-node';
 import { References } from 'pip-services3-commons-node';
 
-//import { ControlObjectsNullClientV1 } from 'iqs-clients-controlobjects-node';
+import { ControlObjectsNullClientV1 } from 'iqs-clients-controlobjects-node';
 import { OrganizationsNullClientV1 } from 'pip-clients-organizations-node';
 
 import { DeviceV1 } from '../../src/data/version1/DeviceV1';
@@ -43,10 +43,10 @@ suite('DevicesController', () => {
     suiteSetup((done) => {
         persistence = new DevicesMemoryPersistence();
         controller = new DevicesController();
-        //let objectsClient = new ControlObjectsNullClientV1();
+        let objectsClient = new ControlObjectsNullClientV1();
 
         let references: References = References.fromTuples(
-            //new Descriptor('iqs-services-controlobjects', 'client', 'null', 'default', '1.0'), objectsClient,
+            new Descriptor('iqs-services-controlobjects', 'client', 'null', 'default', '1.0'), objectsClient,
             new Descriptor('pip-services-organizations', 'client', 'null', 'default', '1.0'), new OrganizationsNullClientV1(),
             new Descriptor('iqs-services-devices', 'persistence', 'memory', 'default', '1.0'), persistence,
             new Descriptor('iqs-services-devices', 'controller', 'default', 'default', '1.0'), controller

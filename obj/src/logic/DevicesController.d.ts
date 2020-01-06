@@ -17,6 +17,7 @@ export declare class DevicesController implements IConfigurable, IReferenceable,
     private _organizationsClient;
     private _smsClient;
     private _messageConnector;
+    private _objectsClient;
     private _objectsConnector;
     private _persistence;
     private _commandSet;

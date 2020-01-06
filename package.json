@@ -1,6 +1,6 @@
 {
     "name": "iqs-services-devices-node",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "author": "Conceptual Vision Consulting LLC",
     "description": "Devices microservice in Node.js",
     "contributors": [
@@ -48,7 +48,8 @@
         "pip-clients-msgdistribution-node": "^1.0.0",
         "pip-clients-msgtemplates-node": "^1.0.0",
         "pip-clients-sms-node": "^1.0.0",
-        "pip-clients-organizations-node": "^1.0.0"
+        "pip-clients-organizations-node": "^1.0.0",
+        "iqs-clients-controlobjects-node": "^1.0.0"
     },
     "devDependencies": {
         "@types/node": "*",

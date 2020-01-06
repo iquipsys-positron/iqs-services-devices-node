@@ -19,7 +19,7 @@ import { MessageResolverV1 } from 'pip-clients-msgdistribution-node';
 import { ISmsClientV1 } from 'pip-clients-sms-node';
 import { CompositeLogger } from 'pip-services3-components-node';
 
-// import { IControlObjectsClientV1 } from 'iqs-clients-controlobjects-node';
+import { IControlObjectsClientV1 } from 'iqs-clients-controlobjects-node';
 import { IOrganizationsClientV1 } from 'pip-clients-organizations-node';
 import { OrganizationV1 } from 'pip-clients-organizations-node';
 
@@ -59,7 +59,7 @@ export class DevicesController implements IConfigurable, IReferenceable, IComman
     private _smsClient: ISmsClientV1;
     private _messageConnector: MessageConnector;
 
-    // private _objectsClient: IControlObjectsClientV1;
+    private _objectsClient: IControlObjectsClientV1;
     private _objectsConnector: ControlObjectsConnector;
     private _persistence: IDevicesPersistence;
     private _commandSet: DevicesCommandSet;
@@ -80,8 +80,8 @@ export class DevicesController implements IConfigurable, IReferenceable, IComman
         this._persistence = this._dependencyResolver.getOneRequired<IDevicesPersistence>('persistence');
         this._smsClient = this._dependencyResolver.getOneOptional<ISmsClientV1>('smsdelivery');
         this._organizationsClient = this._dependencyResolver.getOneRequired<IOrganizationsClientV1>('organizations');
-        // this._objectsClient = this._dependencyResolver.getOneOptional<IControlObjectsClientV1>('control-objects');
-        this._objectsConnector = new ControlObjectsConnector(null); //this._objectsClient);
+        this._objectsClient = this._dependencyResolver.getOneOptional<IControlObjectsClientV1>('control-objects');
+        this._objectsConnector = new ControlObjectsConnector(this._objectsClient);
 
         this._messageConnector = new MessageConnector(
             this._logger,

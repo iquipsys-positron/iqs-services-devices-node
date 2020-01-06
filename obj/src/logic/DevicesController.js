@@ -34,8 +34,8 @@ class DevicesController {
         this._persistence = this._dependencyResolver.getOneRequired('persistence');
         this._smsClient = this._dependencyResolver.getOneOptional('smsdelivery');
         this._organizationsClient = this._dependencyResolver.getOneRequired('organizations');
-        // this._objectsClient = this._dependencyResolver.getOneOptional<IControlObjectsClientV1>('control-objects');
-        this._objectsConnector = new ControlObjectsConnector_1.ControlObjectsConnector(null); //this._objectsClient);
+        this._objectsClient = this._dependencyResolver.getOneOptional('control-objects');
+        this._objectsConnector = new ControlObjectsConnector_1.ControlObjectsConnector(this._objectsClient);
         this._messageConnector = new MessageConnector_1.MessageConnector(this._logger, 
         // this._messageResolver,
         this._templatesResolver, this._smsClient);
