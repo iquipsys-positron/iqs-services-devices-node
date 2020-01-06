@@ -1,0 +1,36 @@
+import { ConfigParams } from 'pip-services3-commons-node';
+import { IConfigurable } from 'pip-services3-commons-node';
+import { IReferences } from 'pip-services3-commons-node';
+import { IReferenceable } from 'pip-services3-commons-node';
+import { FilterParams } from 'pip-services3-commons-node';
+import { PagingParams } from 'pip-services3-commons-node';
+import { DataPage } from 'pip-services3-commons-node';
+import { ICommandable } from 'pip-services3-commons-node';
+import { CommandSet } from 'pip-services3-commons-node';
+import { DeviceV1 } from '../data/version1/DeviceV1';
+import { IDevicesController } from './IDevicesController';
+export declare class DevicesController implements IConfigurable, IReferenceable, ICommandable, IDevicesController {
+    private static _defaultConfig;
+    private _dependencyResolver;
+    private _templatesResolver;
+    private _logger;
+    private _organizationsClient;
+    private _smsClient;
+    private _messageConnector;
+    private _objectsConnector;
+    private _persistence;
+    private _commandSet;
+    configure(config: ConfigParams): void;
+    setReferences(references: IReferences): void;
+    getCommandSet(): CommandSet;
+    getDevices(correlationId: string, filter: FilterParams, paging: PagingParams, callback: (err: any, page: DataPage<DeviceV1>) => void): void;
+    getDeviceById(correlationId: string, id: string, callback: (err: any, device: DeviceV1) => void): void;
+    getDeviceByUdi(correlationId: string, org_id: string, udi: string, callback: (err: any, device: DeviceV1) => void): void;
+    getOrCreateDevice(correlationId: string, org_id: string, type: string, version: number, udi: string, callback: (err: any, device: DeviceV1) => void): void;
+    private fixDevice;
+    createDevice(correlationId: string, device: DeviceV1, callback: (err: any, device: DeviceV1) => void): void;
+    updateDevice(correlationId: string, device: DeviceV1, callback: (err: any, device: DeviceV1) => void): void;
+    deleteDeviceById(correlationId: string, id: string, callback: (err: any, device: DeviceV1) => void): void;
+    setObject(correlationId: string, device_id: string, object_id: string, callback: (err: any, device: DeviceV1) => void): void;
+    unsetObject(correlationId: string, device_id: string, callback: (err: any, device: DeviceV1) => void): void;
+}
